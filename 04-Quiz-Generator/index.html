@@ -4,6 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body></body>
+  <body>
+
+     <!-- The entire section goes here -->
+     <div class="container">
+
+          <!-- The start Screen goes here -->
+          <div class="screen active" id="start-screen">
+               <h1>Quiz Time!</h1>
+               <p>Test your knowledge with these fun questions</p>
+               <button>Start Quiz</button>
+          </div>
+
+          <!-- The Quiz Screen goes here -->
+          <div class=screen" id="quiz-screen">
+
+               <!-- Heading of the Quiz -->
+               <div class="quiz-header">
+                    <!-- Heading of the Quiz sections -->
+                    <h2 id="question-text">Questions goes here</h2>
+                    <!-- Paragraph of the Quiz sections -->
+                    <div class="quiz-info">
+                         <p>Question <span id="current-question">1</span> of <span>5</span></p>
+                         <p>Score: <span id="score">0</span></p>
+                    </div>
+               </div>
+
+               <!-- The options part goes here -->
+               <div id="answers-container" class="answers-container">
+                    <!--Answers button will be inserted here later from our js code later at some point-->
+               </div>
+               <!-- The progress Bar at the end goes here -->
+               <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+               </div>
+
+          </div>
+
+          <!-- The final Score Screen goes here -->
+          <div id="result-screen">
+               <!-- The Heading of This Screen -->
+               <h1>Quiz Reults</h1>
+               <div class="result-info">
+                    <!-- The Paragraph of the result section goes here -->
+                    <p>you Scored <span id="final-score">0</span> out of <span id="max-score">5</span></p>
+                    <div id="result-message">Good job!</div>
+               </div>
+               <button id="restart-btn">Restart Quiz</button>
+          </div>
+
+     </div>
+
+     <script src="script.js"></script>
+  </body>
 </html>
