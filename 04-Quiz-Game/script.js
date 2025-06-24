@@ -16,6 +16,9 @@ const maxScoreSpan = document.getElementById("max-score");
 const resultMessage = document.getElementById("result-message");
 const progressBar = document.getElementById("progress");
 
+const correctSound = document.getElementById("correct-sound");
+const incorrectSound = document.getElementById("incorrect-sound");
+
 const quizQuestions = [
   {
     question: "Who is the President of America as in 2025?",
@@ -128,6 +131,9 @@ function selectAnswer(e) {
   if (correct) {
     score++;
     scoreSpan.textContent = score;
+    correctSound.play(); // Play correct sound
+  } else {
+    incorrectSound.play(); // Play incorrect sound
   }
 
   setTimeout(() => {

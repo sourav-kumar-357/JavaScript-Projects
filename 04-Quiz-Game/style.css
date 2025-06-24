@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #f2f2f2;
+  background: #e0e0e0;
   font-family: "Segoe UI", sans-serif;
   display: flex;
   justify-content: center;
@@ -17,9 +17,9 @@ body {
 }
 
 .container {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 1rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 600px;
   position: relative;
@@ -106,10 +106,11 @@ body {
   text-align: left;
   font-size: 1rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .answer-btn:hover {
   background-color: #f4e3d3;
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 .answer-btn.correct {
   background-color: #d4fcd2;
@@ -168,10 +169,11 @@ button {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 button:hover {
   background-color: #d45b28;
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* DARK MODE */
