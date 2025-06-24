@@ -1,3 +1,4 @@
+// DOM Elements
 const startScreen = document.getElementById("start-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const resultScreen = document.getElementById("result-screen");
@@ -16,9 +17,7 @@ const maxScoreSpan = document.getElementById("max-score");
 const resultMessage = document.getElementById("result-message");
 const progressBar = document.getElementById("progress");
 
-const correctSound = document.getElementById("correct-sound");
-const incorrectSound = document.getElementById("incorrect-sound");
-
+// Quiz Questions
 const quizQuestions = [
   {
     question: "Who is the President of America as in 2025?",
@@ -67,23 +66,29 @@ const quizQuestions = [
   },
 ];
 
+// Game State
 let currentQuestionIndex = 0;
 let score = 0;
 let answersDisabled = false;
 
+// Initialize
 totalQuestionsSpan.textContent = quizQuestions.length;
 maxScoreSpan.textContent = quizQuestions.length;
 
+// Event Listeners
 startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", restartQuiz);
 themeToggle.addEventListener("click", toggleTheme);
 
+// Check for saved theme preference
 window.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
 });
 
+// Functions
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -102,8 +107,9 @@ function showQuestion() {
 
   questionText.textContent = currentQuestion.question;
   currentQuestionSpan.textContent = currentQuestionIndex + 1;
-  progressBar.style.width =
-    (currentQuestionIndex / quizQuestions.length) * 100 + "%";
+  progressBar.style.width = `${
+    (currentQuestionIndex / quizQuestions.length) * 100
+  }%`;
   answersContainer.innerHTML = "";
 
   currentQuestion.answers.forEach((answer) => {
@@ -123,24 +129,29 @@ function selectAnswer(e) {
   const selected = e.target;
   const correct = selected.dataset.correct === "true";
 
+  // Highlight correct/incorrect answers
   Array.from(answersContainer.children).forEach((btn) => {
-    if (btn.dataset.correct === "true") btn.classList.add("correct");
-    else if (btn === selected) btn.classList.add("incorrect");
+    if (btn.dataset.correct === "true") {
+      btn.classList.add("correct");
+    } else if (btn === selected) {
+      btn.classList.add("incorrect");
+    }
   });
 
+  // Update score if correct
   if (correct) {
     score++;
     scoreSpan.textContent = score;
-    correctSound.play(); // Play correct sound
-  } else {
-    incorrectSound.play(); // Play incorrect sound
   }
 
+  // Move to next question or show results
   setTimeout(() => {
     currentQuestionIndex++;
-    currentQuestionIndex < quizQuestions.length
-      ? showQuestion()
-      : showResults();
+    if (currentQuestionIndex < quizQuestions.length) {
+      showQuestion();
+    } else {
+      showResults();
+    }
   }, 1000);
 }
 
@@ -149,17 +160,20 @@ function showResults() {
   resultScreen.classList.add("active");
   finalScoreSpan.textContent = score;
 
-  const pct = (score / quizQuestions.length) * 100;
-  resultMessage.textContent =
-    pct === 100
-      ? "Perfect! You're a genius!"
-      : pct >= 80
-      ? "Great job! You know your stuff!"
-      : pct >= 60
-      ? "Good effort! Keep learning!"
-      : pct >= 40
-      ? "Not bad! Try again to improve!"
-      : "Keep studying! You'll get better!";
+  // Calculate percentage and show appropriate message
+  const percentage = (score / quizQuestions.length) * 100;
+  if (percentage === 100) {
+    resultMessage.textContent = "Perfect! You're a genius! 🎯";
+  } else if (percentage >= 80) {
+    resultMessage.textContent = "Great job! You know your stuff! 👍";
+  } else if (percentage >= 60) {
+    resultMessage.textContent = "Good effort! Keep learning! 📚";
+  } else if (percentage >= 40) {
+    resultMessage.textContent = "Not bad! Try again to improve! 💪";
+  } else {
+    resultMessage.textContent = "Keep studying! You'll get better! ✨";
+  }
+
   progressBar.style.width = "100%";
 }
 
@@ -170,8 +184,19 @@ function restartQuiz() {
 
 function toggleTheme() {
   document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
+  const isDarkMode = document.body.classList.contains("dark");
+
+  // Save preference to localStorage
+  localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+  // Change icon
+  themeToggle.innerHTML = isDarkMode
+    ? '<i class="fas fa-sun"></i>'
+    : '<i class="fas fa-moon"></i>';
+
+  // Add animation class
+  themeToggle.classList.add("theme-toggle-animate");
+  setTimeout(() => {
+    themeToggle.classList.remove("theme-toggle-animate");
+  }, 300);
 }

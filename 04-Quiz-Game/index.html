@@ -3,49 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Game</title>
+    <title>Neon Quiz Challenge</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="container">
+    <div class="theme-toggle-container">
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-            <div class="toggle-track">
-                <div class="toggle-thumb">
-                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </div>
-            </div>
-        </button>
-        <svg
-          id="icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <circle cx="12" cy="12" r="5"></circle>
-          <path
-            d="M12 1v2m0 18v2m9-9h-2M3 12H1m16.95 4.95l-1.41-1.41M6.46 6.46L5.05 5.05m0 13.9l1.41-1.41M17.54 6.46l1.41-1.41"
-          ></path>
-        </svg>
+        <i class="fas fa-moon"></i>
       </button>
+    </div>
 
+    <div class="container">
       <!-- START SCREEN -->
       <div class="screen active" id="start-screen">
         <h1>🧠 Quiz Time!</h1>
-        <p>Test your brain with some tricky questions!</p>
+        <p>Test your knowledge with our challenging questions!</p>
         <button id="start-btn">Start Quiz</button>
       </div>
 
@@ -82,10 +62,6 @@
         <button id="restart-btn">Try Again</button>
       </div>
     </div>
-
-    <!-- Sound Effects -->
-    <audio id="correct-sound" src="correct.mp3" preload="auto"></audio>
-    <audio id="incorrect-sound" src="incorrect.mp3" preload="auto"></audio>
 
     <script src="script.js"></script>
   </body>
