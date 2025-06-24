@@ -8,12 +8,29 @@
   </head>
   <body>
     <div class="container">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg
+          id="icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <path
+            d="M12 1v2m0 18v2m9-9h-2M3 12H1m16.95 4.95l-1.41-1.41M6.46 6.46L5.05 5.05m0 13.9l1.41-1.41M17.54 6.46l1.41-1.41"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- START SCREEN -->
       <div class="screen active" id="start-screen">
-        <h1>Quiz Time!</h1>
-        <p>Test your knowledge with these fun questions</p>
+        <h1>🧠 Quiz Time!</h1>
+        <p>Test your brain with some tricky questions!</p>
         <button id="start-btn">Start Quiz</button>
       </div>
 
+      <!-- QUIZ SCREEN -->
       <div class="screen" id="quiz-screen">
         <div class="quiz-header">
           <h2 id="question-text">Question goes here</h2>
@@ -22,31 +39,28 @@
               Question <span id="current-question">1</span> of
               <span id="total-questions">5</span>
             </p>
-
             <p>Score: <span id="score">0</span></p>
           </div>
         </div>
 
-        <div id="answers-container" class="answers-container">
-          <!-- Answer buttons will be insterted here from our js code later at some point -->
-        </div>
+        <div id="answers-container" class="answers-container"></div>
 
         <div class="progress-bar">
           <div id="progress" class="progress"></div>
         </div>
       </div>
 
-      <div id="result-screen" class="screen">
-        <h1>Quiz Results</h1>
+      <!-- RESULT SCREEN -->
+      <div class="screen" id="result-screen">
+        <h1>🎉 Quiz Results</h1>
         <div class="result-info">
           <p>
             You scored <span id="final-score">0</span> out of
             <span id="max-score">5</span>
           </p>
-
           <div id="result-message">Good job!</div>
         </div>
-        <button id="restart-btn">Restart Quiz</button>
+        <button id="restart-btn">Try Again</button>
       </div>
     </div>
 
