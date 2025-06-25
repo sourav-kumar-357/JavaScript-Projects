@@ -8,7 +8,7 @@ let previousPalettes = [];
 
 generateBtn.addEventListener("click", () => {
   const baseColor = colorPicker.value;
-  const palette = generateColorPalette(baseColor);
+  const palette = generateRandomizedPalette(baseColor);
   previousPalettes.push(palette);
   renderPalette(palette);
 });
@@ -46,15 +46,26 @@ function renderPalette(palette) {
   });
 }
 
-function generateColorPalette(baseColor) {
-  let colors = [];
-  const hsl = hexToHSL(baseColor);
-  for (let i = -2; i <= 2; i++) {
-    let h = (hsl.h + i * 20) % 360;
-    if (h < 0) h += 360;
-    colors.push(hslToHex(h, hsl.s, hsl.l));
+function generateRandomizedPalette(baseColor) {
+  const baseHSL = hexToHSL(baseColor);
+  const palette = [];
+
+  for (let i = 0; i < 5; i++) {
+    const h = (baseHSL.h + getRandomInt(-40, 40) + 360) % 360;
+    const s = clamp(baseHSL.s + getRandomInt(-20, 20), 40, 100);
+    const l = clamp(baseHSL.l + getRandomInt(-15, 15), 20, 90);
+    palette.push(hslToHex(h, s, l));
   }
-  return colors;
+
+  return palette;
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
 
 function hexToHSL(H) {
@@ -146,7 +157,7 @@ function showToast(message) {
   setTimeout(() => toast.remove(), 2000);
 }
 
-// Parallax effect
+// Parallax background effect
 document.addEventListener("mousemove", (e) => {
   const x = (e.clientX / window.innerWidth - 0.5) * 50;
   const y = (e.clientY / window.innerHeight - 0.5) * 50;
