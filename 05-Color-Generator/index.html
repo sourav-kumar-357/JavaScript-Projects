@@ -7,21 +7,16 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app-container">
-      <header>
-        <h1>Color Palette Generator</h1>
-        <button id="theme-toggle">🌙</button>
-      </header>
+    <div class="parallax-bg"></div>
 
+    <div class="main-container">
+      <h1>🎨 Ultimate Color Generator</h1>
       <div class="controls">
-        <input type="color" id="color-picker" />
-        <button id="generate-btn">Generate Palette</button>
+        <input type="color" id="color-picker" value="#3498db" />
+        <button id="generate-btn">Generate Templates</button>
       </div>
-
       <div id="color-container" class="color-container"></div>
     </div>
-
-    <div id="toast" class="toast">Copied!</div>
 
     <script src="script.js"></script>
   </body>
