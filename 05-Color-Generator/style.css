@@ -9,15 +9,24 @@ body {
   background: #121212;
   color: #fff;
   overflow-x: hidden;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 
-.main-container {
-  text-align: center;
-  padding: 30px;
+.main-card {
+  max-width: 960px;
+  width: 95%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px 30px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
   z-index: 2;
   position: relative;
+  text-align: center;
 }
 
 h1 {
