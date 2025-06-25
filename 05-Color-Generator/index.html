@@ -3,15 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Color Generator</title>
+    <title>Ultimate Color Generator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Random Color Generator</h1>
-      <button id="generate-btn">Generate Templates</button>
+    <div class="app-container">
+      <header>
+        <h1>Color Palette Generator</h1>
+        <button id="theme-toggle">🌙</button>
+      </header>
+
+      <div class="controls">
+        <input type="color" id="color-picker" />
+        <button id="generate-btn">Generate Palette</button>
+      </div>
+
       <div id="color-container" class="color-container"></div>
     </div>
+
+    <div id="toast" class="toast">Copied!</div>
+
     <script src="script.js"></script>
   </body>
 </html>
