@@ -1,56 +1,109 @@
-body {
-  font-family: "Arial", sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+:root {
+  --bg: #f0f0f0;
+  --text: #1a1a1a;
+  --box-bg: rgba(255, 255, 255, 0.25);
+  --box-blur: 10px;
+  --btn-bg: #6200ea;
+  --btn-hover: #3700b3;
+  --toast-bg: #333;
 }
 
-.container {
+body.dark {
+  --bg: #1e1e1e;
+  --text: #f0f0f0;
+  --box-bg: rgba(0, 0, 0, 0.25);
+  --btn-bg: #bb86fc;
+  --btn-hover: #985eff;
+  --toast-bg: #eee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+.app-container {
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
   text-align: center;
 }
 
-h1 {
-  color: #333;
-  margin-bottom: 20px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+#theme-toggle {
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.controls {
+  margin: 20px 0;
+}
+
+#color-picker {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 button {
   padding: 10px 20px;
-  font-size: 16px;
-  background-color: #6200ea;
-  color: white;
+  background-color: var(--btn-bg);
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #3700b3;
+  background-color: var(--btn-hover);
 }
 
 .color-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
+  gap: 20px;
 }
 
 .color-box {
   width: 150px;
   height: 150px;
-  margin: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(var(--box-blur));
+  background-color: var(--box-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .color-box:hover {
@@ -60,20 +113,24 @@ button:hover {
 .color-code {
   margin-top: 10px;
   font-weight: bold;
+  font-size: 14px;
+  color: var(--text);
 }
 
-.copy-btn {
-  margin-top: 5px;
-  padding: 5px 10px;
-  font-size: 12px;
-  background-color: #03dac5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--toast-bg);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  font-weight: bold;
 }
 
-.copy-btn:hover {
-  background-color: #018786;
+body.dark .toast {
+  color: #000;
 }
