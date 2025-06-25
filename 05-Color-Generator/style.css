@@ -135,46 +135,14 @@ button:hover {
 }
 
 .parallax-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
   background: radial-gradient(circle at center, #292929, #121212);
-  overflow: hidden;
   z-index: 0;
+  transform: translate(-25%, -25%);
+  transition: transform 0.05s;
   pointer-events: none;
-}
-
-.parallax-bg::before,
-.parallax-bg::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.1;
-  background: #fff;
-  animation: float 10s infinite alternate ease-in-out;
-}
-
-.parallax-bg::before {
-  width: 300px;
-  height: 300px;
-  top: 20%;
-  left: 10%;
-  animation-delay: 1s;
-}
-
-.parallax-bg::after {
-  width: 200px;
-  height: 200px;
-  bottom: 20%;
-  right: 15%;
-  animation-delay: 3s;
-}
-
-@keyframes float {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(40px, -40px);
-  }
 }
