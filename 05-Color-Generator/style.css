@@ -73,10 +73,10 @@ button:hover {
 }
 
 .color-box {
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   margin: 15px;
-  background: #333;
+  background: #201f1f;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.4s;
@@ -149,7 +149,7 @@ button:hover {
   left: 0;
   width: 150%;
   height: 150%;
-  background: radial-gradient(circle at center, #292929, #121212);
+  background: radial-gradient(circle at center, #fa97f5, #f9ffe4);
   z-index: 0;
   transform: translate(-25%, -25%);
   transition: transform 0.05s;
