@@ -1,22 +1,3 @@
-:root {
-  --bg: #f0f0f0;
-  --text: #1a1a1a;
-  --box-bg: rgba(255, 255, 255, 0.25);
-  --box-blur: 10px;
-  --btn-bg: #6200ea;
-  --btn-hover: #3700b3;
-  --toast-bg: #333;
-}
-
-body.dark {
-  --bg: #1e1e1e;
-  --text: #f0f0f0;
-  --box-bg: rgba(0, 0, 0, 0.25);
-  --btn-bg: #bb86fc;
-  --btn-hover: #985eff;
-  --toast-bg: #eee;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -24,113 +5,176 @@ body.dark {
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--text);
   font-family: "Segoe UI", sans-serif;
+  background: #121212;
+  color: #fff;
+  overflow-x: hidden;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.4s, color 0.4s;
+  position: relative;
 }
 
-.app-container {
-  max-width: 900px;
-  width: 100%;
-  padding: 20px;
+.main-container {
   text-align: center;
+  padding: 30px;
+  z-index: 2;
+  position: relative;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header h1 {
-  font-size: 2rem;
-}
-
-#theme-toggle {
-  font-size: 1.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .controls {
-  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 #color-picker {
-  padding: 8px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  height: 40px;
+  width: 60px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 button {
   padding: 10px 20px;
-  background-color: var(--btn-bg);
+  font-size: 1rem;
+  background-color: #6200ea;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: var(--btn-hover);
+  background-color: #3700b3;
+  transform: scale(1.05);
 }
 
 .color-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
 }
 
 .color-box {
-  width: 150px;
-  height: 150px;
-  border-radius: 12px;
-  backdrop-filter: blur(var(--box-blur));
-  background-color: var(--box-bg);
+  width: 160px;
+  height: 160px;
+  margin: 15px;
+  background: #333;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: transform 0.3s;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.6s ease;
 }
 
 .color-box:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
 .color-code {
-  margin-top: 10px;
+  color: #fff;
   font-weight: bold;
-  font-size: 14px;
-  color: var(--text);
+  margin-bottom: 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.copy-btn {
+  padding: 6px 12px;
+  background-color: #03dac5;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.copy-btn:hover {
+  background-color: #018786;
 }
 
 .toast {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--toast-bg);
+  bottom: 30px;
+  right: 30px;
+  background: #333;
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 12px 18px;
+  border-radius: 5px;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s;
-  font-weight: bold;
+  animation: toastIn 0.4s forwards;
+  z-index: 999;
 }
 
-body.dark .toast {
-  color: #000;
+@keyframes toastIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.parallax-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #292929, #121212);
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.parallax-bg::before,
+.parallax-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  background: #fff;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.parallax-bg::before {
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 1s;
+}
+
+.parallax-bg::after {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(40px, -40px);
+  }
 }
