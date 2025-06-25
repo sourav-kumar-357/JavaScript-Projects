@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,7 @@
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background: #121212;
+  background: linear-gradient(135deg, #1e1e2f, #2c2c3a);
   color: #fff;
   overflow-x: hidden;
   height: 100vh;
@@ -19,19 +21,21 @@ body {
 .main-card {
   max-width: 960px;
   width: 95%;
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, #e2cd45 0%, #88d3ce 100%);
+  border: 1px solid rgba(0, 0, 0, 0.918);
   border-radius: 20px;
   padding: 40px 30px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
   z-index: 2;
   position: relative;
   text-align: center;
 }
 
 h1 {
+  font-family: "Poppins", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 20px;
+  color: #000;
 }
 
 .controls {
