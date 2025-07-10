@@ -1,0 +1,136 @@
+:root {
+    --primary: #3e8ef7;
+    --bg: #f2f6fc;
+    --task-bg: #ffffffcc;
+    --task-done-bg: #dfffe0;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom right, #76f8aa, #b5eb79);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+}
+
+.todo-app {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    align-content: center;
+    padding: 2rem;
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#task-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: var(--radius);
+    font-size: 1rem;
+}
+
+#add-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#add-btn:hover {
+    background: #1c6ed2;
+}
+
+#task-list {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.task-item {
+    background: var(--task-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.task-item.done {
+    background: var(--task-done-bg);
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.status-circle {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    background: white;
+    transition: background 0.3s ease;
+}
+
+.task-item.done .status-circle {
+    background: var(--primary);
+}
+
+.task-text {
+    font-size: 1rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.task-item.done .task-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #f44336;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.delete-btn:hover {
+    color: #d32f2f;
+}
